@@ -11,7 +11,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool isGalleryView = false;
- 
 
   @override
   void initState() {
@@ -51,9 +50,21 @@ class _HomeState extends State<Home> {
     );
   }
 
+  List<String> containerTexts = [
+    'Text 1',
+    'Text 2',
+    'Text 3',
+    'Text 4',
+    'Text 5',
+    'Text 6',
+    'Text 7',
+    'Text 8',
+    'Text 9',
+    'Text 10',
+  ];
   List<Widget> _buildContainers() {
     return List.generate(
-      22,
+      10,
       (index) => GestureDetector(
         onTap: () {
           // Handle the click for the container
@@ -72,6 +83,18 @@ class _HomeState extends State<Home> {
           decoration: BoxDecoration(
             color: const Color.fromRGBO(120, 142, 141, 0.56),
             borderRadius: BorderRadius.circular(20),
+          ),
+          child: Center(
+            child: Text(
+              containerTexts[index],
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Color.fromRGBO(255, 255, 255, 1),
+                fontSize: 20,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w500,
+              ),
+                  ),
           ),
         ),
       ),

@@ -18,24 +18,23 @@ class _MyAppState extends State<MyApp> {
   bool isGalleryView = true; // Whether to show the gallery view
   late bool isMessageSent = true; // testing
 // Replace the const keyword with final to make _pages a modifiable list
-final List<Widget> _pages = [
-  Home(isMessageSent: true),
-  Favorites(),
-  Settings(),
-];
-
+  final List<Widget> _pages = [
+    Home(isMessageSent: true),
+    const Favorites(),
+    const Settings(),
+  ];
 
 // Inside the toggleGalleryView function
-void toggleGalleryView() {
-  setState(() {
-    isGalleryView = !isGalleryView;
-    print('skeletonToggle');
-    isMessageSent = !isMessageSent;
+  void toggleGalleryView() {
+    setState(() {
+      isGalleryView = !isGalleryView;
+      print('skeletonToggle');
+      isMessageSent = !isMessageSent;
 
-    // Create a new list with the updated Home widget
-    _pages[0] = Home(isMessageSent: isMessageSent);
-  });
-}
+      // Create a new list with the updated Home widget
+      _pages[0] = Home(isMessageSent: isMessageSent);
+    });
+  }
 
   final List<String> _appBarTitles = [
     "Gallery",
@@ -59,20 +58,26 @@ void toggleGalleryView() {
             backgroundColor: const Color(0xFF677C7B),
             elevation: 0, // Remove the app bar's shadow
             actions: [
-              if(_selectedIndex == 0)
-              // Add a button to toggle the gallery view
-              IconButton(
-                icon: Icon(isGalleryView ? Icons.view_list : Icons.grid_view),
-                onPressed: () {
-                  setState(() {
-                    isGalleryView = !isGalleryView;
-                    print('skeletonToggle');
-                    isMessageSent = !isMessageSent;
-                    // Pass isMessageSent to Home widget
-                    _pages[0] = Home(isMessageSent: isMessageSent);
-                  });
-                },
-              ),
+              if (_selectedIndex == 0)
+                // Add a button to toggle the gallery view
+                IconButton(
+                  icon: Image.asset(
+                    isGalleryView
+                        ? 'assets/listView.png'
+                        : 'assets/galleryView.png',
+                    // You can adjust the scale value as needed
+                    scale: 0.7,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isGalleryView = !isGalleryView;
+                      print('skeletonToggle');
+                      isMessageSent = !isMessageSent;
+                      // Pass isMessageSent to Home widget
+                      _pages[0] = Home(isMessageSent: isMessageSent);
+                    });
+                  },
+                ),
             ],
           ),
           body: Stack(
