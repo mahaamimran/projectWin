@@ -15,8 +15,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
+  bool isGalleryView = true; // Whether to show the gallery view
+  late bool isMessageSent = true; // testing
   final List<Widget> _pages = [
-    const Home(),
+    Home(isMessageSent: true),
     const Favorites(),
     const Settings(),
   ];
@@ -26,13 +28,12 @@ class _MyAppState extends State<MyApp> {
     "Favorites",
     "Settings",
   ];
-bool isGalleryView = true; // Whether to show the gallery view
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Builder(builder: (BuildContext context) {
         return Scaffold(
-         // extendBodyBehindAppBar: true, // Extend body behind the app bar
+          // extendBodyBehindAppBar: true, // Extend body behind the app bar
           appBar: AppBar(
             title: Text(
               _appBarTitles[_selectedIndex],
@@ -41,15 +42,21 @@ bool isGalleryView = true; // Whether to show the gallery view
                 fontSize: MediaQuery.of(context).size.width * 0.055,
               ),
             ),
-              backgroundColor: const Color(0xFF677C7B),
+            backgroundColor: const Color(0xFF677C7B),
             elevation: 0, // Remove the app bar's shadow
-            actions: [ // Add a button to toggle the gallery view
+            actions: [
+              // Add a button to toggle the gallery view
               IconButton(
                 icon: Icon(isGalleryView ? Icons.view_list : Icons.grid_view),
                 onPressed: () {
                   setState(() {
-                    isGalleryView = !isGalleryView; // Toggle the gallery view
+                    isGalleryView = !isGalleryView;
                     print('skeletonToggle');
+                    isMessageSent = !isMessageSent;
+                    
+
+                    // Pass isMessageSent to Home widget
+                    _pages[0] = Home(isMessageSent: isMessageSent);
                   });
                 },
               ),
@@ -68,7 +75,8 @@ bool isGalleryView = true; // Whether to show the gallery view
                     showSelectedLabels: false,
                     showUnselectedLabels: false,
                     backgroundColor: const Color(0xD8D9D9D9),
-                    unselectedItemColor: const Color.fromARGB(150, 120, 142, 141),
+                    unselectedItemColor:
+                        const Color.fromARGB(150, 120, 142, 141),
                     selectedItemColor: const Color.fromARGB(255, 55, 73, 87),
                     currentIndex: _selectedIndex,
                     onTap: (index) {
@@ -110,4 +118,3 @@ bool isGalleryView = true; // Whether to show the gallery view
     );
   }
 }
-

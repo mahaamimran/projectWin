@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-
 class Home extends StatefulWidget {
-  const Home({super.key});
+  final bool isMessageSent; // Add this parameter
+
+  const Home({Key? key, required this.isMessageSent}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
+
 class _HomeState extends State<Home> {
   bool isGalleryView = true;
   double containerWidth = 175;
   double containerHeight = 175;
+  
+  get isMessageSent => null;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +61,7 @@ class _HomeState extends State<Home> {
         onTap: () {
           // Handle the click for the container
           print('tapped box $index');
+          print('$isMessageSent');
         },
         child: Container(
           width: containerWidth,
