@@ -17,11 +17,25 @@ class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
   bool isGalleryView = true; // Whether to show the gallery view
   late bool isMessageSent = true; // testing
-  final List<Widget> _pages = [
-    Home(isMessageSent: true),
-    const Favorites(),
-    const Settings(),
-  ];
+// Replace the const keyword with final to make _pages a modifiable list
+final List<Widget> _pages = [
+  Home(isMessageSent: true),
+  Favorites(),
+  Settings(),
+];
+
+
+// Inside the toggleGalleryView function
+void toggleGalleryView() {
+  setState(() {
+    isGalleryView = !isGalleryView;
+    print('skeletonToggle');
+    isMessageSent = !isMessageSent;
+
+    // Create a new list with the updated Home widget
+    _pages[0] = Home(isMessageSent: isMessageSent);
+  });
+}
 
   final List<String> _appBarTitles = [
     "Gallery",
@@ -45,6 +59,7 @@ class _MyAppState extends State<MyApp> {
             backgroundColor: const Color(0xFF677C7B),
             elevation: 0, // Remove the app bar's shadow
             actions: [
+              if(_selectedIndex == 0)
               // Add a button to toggle the gallery view
               IconButton(
                 icon: Icon(isGalleryView ? Icons.view_list : Icons.grid_view),
@@ -53,8 +68,6 @@ class _MyAppState extends State<MyApp> {
                     isGalleryView = !isGalleryView;
                     print('skeletonToggle');
                     isMessageSent = !isMessageSent;
-                    
-
                     // Pass isMessageSent to Home widget
                     _pages[0] = Home(isMessageSent: isMessageSent);
                   });

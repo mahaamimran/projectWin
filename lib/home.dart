@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 class Home extends StatefulWidget {
-  final bool isMessageSent; // Add this parameter
+  final bool isMessageSent;
 
   const Home({Key? key, required this.isMessageSent}) : super(key: key);
 
@@ -9,14 +10,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool isGalleryView = false; // Set initial state based on widget.isMessageSent
-  double containerWidth = 175;
-  double containerHeight = 175;
+  bool isGalleryView = false;
+ 
 
   @override
   void initState() {
     super.initState();
     // Set the initial state of isGalleryView based on widget.isMessageSent
+    isGalleryView = widget.isMessageSent;
+  }
+
+  @override
+  void didUpdateWidget(covariant Home oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Update isGalleryView based on widget.isMessageSent
     isGalleryView = widget.isMessageSent;
   }
 
@@ -41,21 +48,6 @@ class _HomeState extends State<Home> {
             ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            isGalleryView = !isGalleryView;
-            if (isGalleryView) {
-              containerWidth = MediaQuery.of(context).size.width * 0.4;
-              containerHeight = MediaQuery.of(context).size.width * 0.4;
-            } else {
-              containerWidth = MediaQuery.of(context).size.width * 0.9;
-              containerHeight = MediaQuery.of(context).size.width * 0.3;
-            }
-          });
-        },
-        child: Icon(isGalleryView ? Icons.view_list : Icons.grid_view),
-      ),
     );
   }
 
@@ -69,8 +61,12 @@ class _HomeState extends State<Home> {
           print('Is Message Sent: ${widget.isMessageSent}');
         },
         child: Container(
-          width: containerWidth,
-          height: containerHeight,
+          width: isGalleryView
+              ? MediaQuery.of(context).size.width * 0.4
+              : MediaQuery.of(context).size.width * 0.9,
+          height: isGalleryView
+              ? MediaQuery.of(context).size.width * 0.4
+              : MediaQuery.of(context).size.height * 0.15,
           margin:
               EdgeInsets.only(bottom: MediaQuery.of(context).size.width * 0.04),
           decoration: BoxDecoration(
