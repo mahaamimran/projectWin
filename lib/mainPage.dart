@@ -26,11 +26,13 @@ class _MyAppState extends State<MyApp> {
     "Favorites",
     "Settings",
   ];
+bool isGalleryView = true; // Whether to show the gallery view
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Builder(builder: (BuildContext context) {
         return Scaffold(
+         // extendBodyBehindAppBar: true, // Extend body behind the app bar
           appBar: AppBar(
             title: Text(
               _appBarTitles[_selectedIndex],
@@ -39,62 +41,73 @@ class _MyAppState extends State<MyApp> {
                 fontSize: MediaQuery.of(context).size.width * 0.055,
               ),
             ),
-            backgroundColor: const Color(0xFF677C7B),
+              backgroundColor: const Color(0xFF677C7B),
+            elevation: 0, // Remove the app bar's shadow
+            actions: [ // Add a button to toggle the gallery view
+              IconButton(
+                icon: Icon(isGalleryView ? Icons.view_list : Icons.grid_view),
+                onPressed: () {
+                  setState(() {
+                    isGalleryView = !isGalleryView; // Toggle the gallery view
+                    print('skeletonToggle');
+                  });
+                },
+              ),
+            ],
           ),
-          body: _pages[_selectedIndex],
-          /*
-          bottomNavigationBar: Padding(
-            padding: const EdgeInsets.only(
-              bottom: 35,
-              left: 40,
-              right: 40,
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Expanded(
-                child: BottomNavigationBar(
-                  showSelectedLabels: false,
-                  showUnselectedLabels: false,
-                  backgroundColor: const Color(0xD8D9D9D9),
-                  unselectedItemColor: const Color.fromARGB(150, 120, 142, 141),
-                  selectedItemColor: const Color.fromARGB(255, 55, 73, 87),
-                  currentIndex: _selectedIndex,
-                  onTap: (index) {
-                    setState(() {
-                      _selectedIndex = index;
-                    });
-                  },
-                  items: [
-                    BottomNavigationBarItem(
-                      icon: Image.asset(
-                        'assets/navigationbar/home.png',
-                        scale: 0.8,
+          body: Stack(
+            children: [
+              _pages[_selectedIndex], // Your main content
+              Positioned(
+                left: 40,
+                right: 40,
+                bottom: 35,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: BottomNavigationBar(
+                    showSelectedLabels: false,
+                    showUnselectedLabels: false,
+                    backgroundColor: const Color(0xD8D9D9D9),
+                    unselectedItemColor: const Color.fromARGB(150, 120, 142, 141),
+                    selectedItemColor: const Color.fromARGB(255, 55, 73, 87),
+                    currentIndex: _selectedIndex,
+                    onTap: (index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    },
+                    items: [
+                      BottomNavigationBarItem(
+                        icon: Image.asset(
+                          'assets/navigationbar/home.png',
+                          scale: 0.8,
+                        ),
+                        label: '',
                       ),
-                      label: '',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Image.asset(
-                        'assets/navigationbar/favourites.png',
-                        scale: 0.8,
+                      BottomNavigationBarItem(
+                        icon: Image.asset(
+                          'assets/navigationbar/favourites.png',
+                          scale: 0.8,
+                        ),
+                        label: '',
                       ),
-                      label: '',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Image.asset(
-                        'assets/navigationbar/settings.png',
-                        scale: 0.8,
+                      BottomNavigationBarItem(
+                        icon: Image.asset(
+                          'assets/navigationbar/settings.png',
+                          scale: 0.8,
+                        ),
+                        label: '',
                       ),
-                      label: '',
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
-          */
         );
       }),
       debugShowCheckedModeBanner: false,
     );
   }
 }
+

@@ -7,9 +7,9 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 class _HomeState extends State<Home> {
-  bool isGalleryView = false;
-  double containerWidth = 100;
-  double containerHeight = 100;
+  bool isGalleryView = true;
+  double containerWidth = 175;
+  double containerHeight = 175;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class _HomeState extends State<Home> {
         children: [
           if (isGalleryView)
             Wrap(
-              spacing: 10.0,
-              runSpacing: 10.0,
+              spacing: MediaQuery.of(context).size.width * 0.06,
+              runSpacing: MediaQuery.of(context).size.width * 0.01,
               alignment: WrapAlignment.center,
               children: _buildContainers(),
             )
