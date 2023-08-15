@@ -9,11 +9,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool isGalleryView = true;
+  bool isGalleryView = false; // Set initial state based on widget.isMessageSent
   double containerWidth = 175;
   double containerHeight = 175;
-  
-  get isMessageSent => null;
+
+  @override
+  void initState() {
+    super.initState();
+    // Set the initial state of isGalleryView based on widget.isMessageSent
+    isGalleryView = widget.isMessageSent;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +49,7 @@ class _HomeState extends State<Home> {
               containerWidth = MediaQuery.of(context).size.width * 0.4;
               containerHeight = MediaQuery.of(context).size.width * 0.4;
             } else {
-             containerWidth = MediaQuery.of(context).size.width * 0.9;
+              containerWidth = MediaQuery.of(context).size.width * 0.9;
               containerHeight = MediaQuery.of(context).size.width * 0.3;
             }
           });
@@ -61,14 +66,15 @@ class _HomeState extends State<Home> {
         onTap: () {
           // Handle the click for the container
           print('tapped box $index');
-          print('$isMessageSent');
+          print('Is Message Sent: ${widget.isMessageSent}');
         },
         child: Container(
           width: containerWidth,
           height: containerHeight,
-           margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * 0.04),
+          margin:
+              EdgeInsets.only(bottom: MediaQuery.of(context).size.width * 0.04),
           decoration: BoxDecoration(
-            color: Color.fromRGBO(120, 142, 141, 0.56),
+            color: const Color.fromRGBO(120, 142, 141, 0.56),
             borderRadius: BorderRadius.circular(20),
           ),
         ),
