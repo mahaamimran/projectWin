@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
           ),
           body: Stack(
             children: [
-              _pages[_selectedIndex], // Your main content
+              _pages[_selectedIndex], // page behind the bottom navigation bar
               Positioned(
                 left: 40,
                 right: 40,
