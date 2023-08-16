@@ -41,6 +41,7 @@ class _MyAppState extends State<MyApp> {
     "Favorites",
     "Settings",
   ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,7 +53,7 @@ class _MyAppState extends State<MyApp> {
               _appBarTitles[_selectedIndex],
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: MediaQuery.of(context).size.width * 0.055,
+                fontSize: MediaQuery.of(context).size.width * 0.05,
               ),
             ),
             backgroundColor: const Color(0xFF677C7B),

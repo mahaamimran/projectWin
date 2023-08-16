@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+// is gallerry view?change font:size accordingly;
 class Home extends StatefulWidget {
   final bool isMessageSent;
 
@@ -62,6 +62,18 @@ class _HomeState extends State<Home> {
     'Text 9',
     'Text 10',
   ];
+  List<String> containerImages = [
+    'assets/listView.png',
+    'assets/listView.png',
+    'assets/listView.png',
+    'assets/listView.png',
+    'assets/listView.png',
+    'assets/listView.png',
+    'assets/listView.png',
+    'assets/listView.png',
+    'assets/listView.png',
+    'assets/listView.png',
+  ];
   List<Widget> _buildContainers() {
     return List.generate(
       10,
@@ -85,16 +97,28 @@ class _HomeState extends State<Home> {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Center(
-            child: Text(
-              containerTexts[index],
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Color.fromRGBO(255, 255, 255, 1),
-                fontSize: 20,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-              ),
+            child: Column(
+              // spacing for png image and text in eachh box
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  containerTexts[index],
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Color.fromRGBO(255, 255, 255, 1),
+                    fontSize: 20,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w500,
                   ),
+                ),
+      
+                Image.asset(
+                  containerImages[index],
+                  width: 50, // Adjust the width of the image
+                  height: 50, // Adjust the height of the image
+                ),
+              ],
+            ),
           ),
         ),
       ),
