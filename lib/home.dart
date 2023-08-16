@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:projectwin/pages/page0.dart';
+import 'package:projectwin/pages/page1.dart';
+
+
+
+
+
 // is gallerry view?change font:size accordingly;
 class Home extends StatefulWidget {
   final bool isMessageSent;
@@ -24,6 +31,80 @@ class _HomeState extends State<Home> {
     super.didUpdateWidget(oldWidget);
     // Update isGalleryView based on widget.isMessageSent
     isGalleryView = widget.isMessageSent;
+  }
+
+  void navigateToPage(int index) {
+    if (index == 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page0()), 
+      );
+    }
+    else if(index==1){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page1()), 
+      );
+    }
+    else if(index==2){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page0()), 
+      );
+    }
+    else if(index==3){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page0()), 
+      );
+    }
+    else if(index==4){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page0()), 
+      );
+    }
+    else if(index==5){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page0()), 
+      );
+    }
+    else if(index==6){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page0()), 
+      );
+    }
+    else if(index==7){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page0()), 
+      );
+    }
+    else if(index==8){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page0()), 
+      );
+    }
+    else if(index==9){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Page0()), 
+      );
+    }
+   
   }
 
   @override
@@ -81,7 +162,9 @@ class _HomeState extends State<Home> {
         onTap: () {
           // Handle the click for the container
           print('tapped box $index');
-          print('Is Message Sent: ${widget.isMessageSent}');
+          print('Is Message Sent: ${widget.isMessageSent}');            
+          navigateToPage(index);
+          
         },
         child: Container(
           width: isGalleryView
@@ -111,7 +194,6 @@ class _HomeState extends State<Home> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-      
                 Image.asset(
                   containerImages[index],
                   width: 50, // Adjust the width of the image
