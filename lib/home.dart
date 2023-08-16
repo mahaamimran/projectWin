@@ -2,16 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:projectwin/pages/page0.dart';
 import 'package:projectwin/pages/page1.dart';
 
-
-
-
-
 // is gallerry view?change font:size accordingly;
 class Home extends StatefulWidget {
   final bool isMessageSent;
-
   const Home({Key? key, required this.isMessageSent}) : super(key: key);
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -25,7 +19,6 @@ class _HomeState extends State<Home> {
     // Set the initial state of isGalleryView based on widget.isMessageSent
     isGalleryView = widget.isMessageSent;
   }
-
   @override
   void didUpdateWidget(covariant Home oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -48,62 +41,7 @@ class _HomeState extends State<Home> {
             builder: (context) => Page1()), 
       );
     }
-    else if(index==2){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Page0()), 
-      );
-    }
-    else if(index==3){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Page0()), 
-      );
-    }
-    else if(index==4){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Page0()), 
-      );
-    }
-    else if(index==5){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Page0()), 
-      );
-    }
-    else if(index==6){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Page0()), 
-      );
-    }
-    else if(index==7){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Page0()), 
-      );
-    }
-    else if(index==8){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Page0()), 
-      );
-    }
-    else if(index==9){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => Page0()), 
-      );
-    }
+    // add more as pages are built
    
   }
 

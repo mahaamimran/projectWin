@@ -14,10 +14,22 @@ class _Page1State extends State<Page1> {
       appBar: AppBar(
         title: Text('Page 1'),
       ),
-      body: Center(
-        child: Text(
-          'This is Page 1',
-          style: TextStyle(fontSize: 20),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+                  '🚧 Page Under Construction 🚧\n🚨 Move Away 🚨',
+
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                    fontSize: 28,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+          ],
         ),
       ),
     );

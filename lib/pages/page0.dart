@@ -12,12 +12,25 @@ class _Page0State extends State<Page0> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFF677C7B),
         title: Text('Page 0'),
       ),
-      body: Center(
-        child: Text(
-          'This is Page 0',
-          style: TextStyle(fontSize: 20),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+                  '🚧 Page Under Construction 🚧\n\n🚨 Move Away 🚨',
+
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                    fontSize: 28,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+          ],
         ),
       ),
     );
