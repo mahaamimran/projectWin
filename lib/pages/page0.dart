@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class Page0 extends StatefulWidget {
@@ -13,7 +15,7 @@ class _Page0State extends State<Page0> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF677C7B),
-        title: Text('Page 0'),
+        title: const Text('Page 0'),
       ),
       body: const Center(
         child: Column(
