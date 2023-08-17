@@ -1,5 +1,66 @@
 import 'package:flutter/material.dart';
+// subpage 1
+class SubPage1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color.fromRGBO(120, 142, 141, 0.56),
+      child: const Center(
+        child: Text(
+          'Sub Page 1',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
+// subpage 2
+class SubPage2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color.fromRGBO(120, 142, 141, 0.4),
+      child: const Center(
+        child: Text(
+          'Sub Page 2',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
+// subpage 1
+class SubPage3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color.fromRGBO(120, 142, 141, 0.56),
+      child: const Center(
+        child: Text(
+          'Sub Page 1',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
+// subpage 2
+class SubPage4 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color.fromRGBO(120, 142, 141, 0.4),
+      child: const Center(
+        child: Text(
+          'Sub Page 2',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
 
+// skeleton widget
 class Page0 extends StatefulWidget {
   const Page0({Key? key}) : super(key: key);
 
@@ -14,44 +75,11 @@ class _Page0State extends State<Page0> {
   int _currentPageIndex = 0; // Initialize with the first page index
   late PageController _pageController;
   // subpage list
-  final List<Widget> _subPages = [
-    Container(
-      color: const Color.fromRGBO(120, 142, 141, 0.56),
-      child: const Center(
-        child: Text(
-          'Sub Page 1',
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-      ),
-    ),
-    Container(
-      color: const Color.fromRGBO(120, 142, 141, 0.4),
-      child: const Center(
-        child: Text(
-          'Sub Page 2',
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-      ),
-    ),
-    Container(
-      color: const Color.fromRGBO(120, 142, 141, 0.56),
-      child: const Center(
-        child: Text(
-          'Sub Page 3',
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-      ),
-    ),
-    Container(
-      color: const Color.fromRGBO(120, 142, 141, 0.4),
-      child: const Center(
-        child: Text(
-          'Sub Page 3',
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-      ),
-    ),
-    // Add more sub pages as needed
+   final List<Widget> _subPages = [
+    SubPage1(),
+    SubPage2(),
+    SubPage3(),
+    SubPage4(),
   ];
   @override
   void initState() {
