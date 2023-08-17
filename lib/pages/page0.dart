@@ -13,6 +13,46 @@ class _Page0State extends State<Page0> {
   bool _isPlaying = false;
   int _currentPageIndex = 0; // Initialize with the first page index
   late PageController _pageController;
+  // subpage list
+  final List<Widget> _subPages = [
+    Container(
+      color: const Color.fromRGBO(120, 142, 141, 0.56),
+      child: const Center(
+        child: Text(
+          'Sub Page 1',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    ),
+    Container(
+      color: const Color.fromRGBO(120, 142, 141, 0.4),
+      child: const Center(
+        child: Text(
+          'Sub Page 2',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    ),
+    Container(
+      color: const Color.fromRGBO(120, 142, 141, 0.56),
+      child: const Center(
+        child: Text(
+          'Sub Page 3',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    ),
+    Container(
+      color: const Color.fromRGBO(120, 142, 141, 0.4),
+      child: const Center(
+        child: Text(
+          'Sub Page 3',
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
+      ),
+    ),
+    // Add more sub pages as needed
+  ];
   @override
   void initState() {
     super.initState();
@@ -38,7 +78,8 @@ class _Page0State extends State<Page0> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF677C7B),
-        title: const Text('Page 0'),
+        title: const Text('Praise & Glorification'),
+        /*
         actions: [
           IconButton(
             icon: Image.asset(
@@ -53,57 +94,20 @@ class _Page0State extends State<Page0> {
             },
           ),
         ],
+          */
       ),
-      // sub pages
       body: PageView(
         scrollDirection: Axis.horizontal,
         reverse: true,
-         onPageChanged: (index) {
+        onPageChanged: (index) {
           // This callback is triggered whenever the page changes
           setState(() {
             _currentPageIndex = index;
             print('page index: $_currentPageIndex');
           });
         },
-        children: [
-          Container(
-            color: const Color.fromRGBO(120, 142, 141, 0.56),
-            child: const Center(
-              child: Text(
-                'Sub Page 1',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
-            ),
-          ),
-          Container(
-            color: const Color.fromRGBO(120, 142, 141, 0.4),
-            child: const Center(
-              child: Text(
-                'Sub Page 2',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
-            ),
-          ),
-          Container(
-            color: const Color.fromRGBO(120, 142, 141, 0.56),
-            child: const Center(
-              child: Text(
-                'Sub Page 3',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
-            ),
-          ),
-          Container(
-            color: const Color.fromRGBO(120, 142, 141, 0.4),
-            child: const Center(
-              child: Text(
-                'Sub Page 3',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
-            ),
-          ),
-          // Add more pages as needed
-        ],
+        controller: PageController(initialPage: _currentPageIndex),
+        children: _subPages,
       ),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
@@ -119,10 +123,10 @@ class _Page0State extends State<Page0> {
         },
         items: [
           // number of page
-           BottomNavigationBarItem(
+          BottomNavigationBarItem(
             // not clickable item
             icon: Text(
-                '${_currentPageIndex + 1}/4', 
+              '${_currentPageIndex + 1}/4',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -179,7 +183,7 @@ class _Page0State extends State<Page0> {
             icon: IconButton(
               onPressed: () {
                 // Handle play/pause button click
-                print('fav');
+                print('share');
               },
               icon: const Icon(
                 Icons.share,
@@ -189,6 +193,30 @@ class _Page0State extends State<Page0> {
             label: '',
           ),
         ],
+      ),
+      endDrawer: Drawer(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: _subPages.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text('Sub Page ${index + 1}'),
+                    onTap: () {
+                      setState(() {
+                        _selectedIndex = index;
+                        print('page $_selectedIndex WOHOO');
+                        
+                      });
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

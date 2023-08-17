@@ -19,6 +19,7 @@ class _HomeState extends State<Home> {
     // Set the initial state of isGalleryView based on widget.isMessageSent
     isGalleryView = widget.isMessageSent;
   }
+
   @override
   void didUpdateWidget(covariant Home oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -30,19 +31,15 @@ class _HomeState extends State<Home> {
     if (index == 0) {
       Navigator.push(
         context,
-        MaterialPageRoute(
-            builder: (context) => Page0()), 
+        MaterialPageRoute(builder: (context) => Page0()),
       );
-    }
-    else if(index==1){
+    } else if (index == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(
-            builder: (context) => Page1()), 
+        MaterialPageRoute(builder: (context) => Page1()),
       );
     }
     // add more as pages are built
-   
   }
 
   @override
@@ -70,16 +67,16 @@ class _HomeState extends State<Home> {
   }
 
   List<String> containerTexts = [
-    'Text 1',
-    'Text 2',
-    'Text 3',
-    'Text 4',
-    'Text 5',
-    'Text 6',
-    'Text 7',
-    'Text 8',
-    'Text 9',
-    'Text 10',
+    'Praise & Glorification',
+    'Morning',
+    'Evening',
+    'Protection',
+    'Protection From an Enemy',
+    'Protection During the Night',
+    'Fright During Sleep',
+    'After a Bad Dream',
+    'Wardign Off Evil Whisperings',
+    'Warding Off Evil-Eye',
   ];
   List<String> containerImages = [
     'assets/listView.png',
@@ -100,9 +97,8 @@ class _HomeState extends State<Home> {
         onTap: () {
           // Handle the click for the container
           print('tapped box $index');
-          print('Is Message Sent: ${widget.isMessageSent}');            
+          print('Is Message Sent: ${widget.isMessageSent}');
           navigateToPage(index);
-          
         },
         child: Container(
           width: isGalleryView
@@ -117,19 +113,24 @@ class _HomeState extends State<Home> {
             color: const Color.fromRGBO(120, 142, 141, 0.56),
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 25,
+              right: 25,
+              top: 10,
+            ),
             child: Column(
               // spacing for png image and text in eachh box
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
                   containerTexts[index],
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                   style: const TextStyle(
                     color: Color.fromRGBO(255, 255, 255, 1),
-                    fontSize: 20,
+                    fontSize: 18,
                     fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 Image.asset(
