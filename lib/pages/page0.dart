@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 
 class Page0 extends StatefulWidget {
@@ -10,30 +8,187 @@ class Page0 extends StatefulWidget {
 }
 
 class _Page0State extends State<Page0> {
+  bool isGalleryView = true;
+  int _selectedIndex = 0;
+  bool _isPlaying = false;
+  int _currentPageIndex = 0; // Initialize with the first page index
+  late PageController _pageController;
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: _currentPageIndex);
+    _pageController.addListener(_handlePageChange);
+  }
+
+  void _handlePageChange() {
+    setState(() {
+      _currentPageIndex = _pageController.page!.toInt();
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.removeListener(_handlePageChange);
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF677C7B),
         title: const Text('Page 0'),
+        actions: [
+          IconButton(
+            icon: Image.asset(
+              isGalleryView ? 'assets/listView.png' : 'assets/galleryView.png',
+              scale: 0.7,
+            ),
+            onPressed: () {
+              setState(() {
+                isGalleryView = !isGalleryView;
+                print('isGalleryView: $isGalleryView');
+              });
+            },
+          ),
+        ],
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-                  '🚧 Page Under Construction 🚧\n\n🚨 Move Away 🚨',
+      // sub pages
+      body: PageView(
+        scrollDirection: Axis.horizontal,
+        reverse: true,
+         onPageChanged: (index) {
+          // This callback is triggered whenever the page changes
+          setState(() {
+            _currentPageIndex = index;
+            print('page index: $_currentPageIndex');
+          });
+        },
+        children: [
+          Container(
+            color: const Color.fromRGBO(120, 142, 141, 0.56),
+            child: const Center(
+              child: Text(
+                'Sub Page 1',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+            ),
+          ),
+          Container(
+            color: const Color.fromRGBO(120, 142, 141, 0.4),
+            child: const Center(
+              child: Text(
+                'Sub Page 2',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+            ),
+          ),
+          Container(
+            color: const Color.fromRGBO(120, 142, 141, 0.56),
+            child: const Center(
+              child: Text(
+                'Sub Page 3',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+            ),
+          ),
+          Container(
+            color: const Color.fromRGBO(120, 142, 141, 0.4),
+            child: const Center(
+              child: Text(
+                'Sub Page 3',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+            ),
+          ),
+          // Add more pages as needed
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        backgroundColor: Colors.white,
+        unselectedItemColor: const Color.fromARGB(150, 120, 142, 141),
+        selectedItemColor: const Color.fromARGB(255, 55, 73, 87),
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        items: [
+          // number of page
+           BottomNavigationBarItem(
+            // not clickable item
+            icon: Text(
+                '${_currentPageIndex + 1}/4', 
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {
+                // Handle play/pause button click
+                print('object');
+              },
+              icon: const Icon(
+                Icons.loop,
+                size: 30,
+              ),
+            ),
+            label: '',
+          ),
 
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: 28,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-          ],
-        ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {
+                setState(() {
+                  // Handle play/pause button click
+                  _isPlaying = !_isPlaying;
+                  print('pause play');
+                });
+              },
+              icon: Icon(
+                _isPlaying ? Icons.pause : Icons.play_arrow,
+                size: 30,
+              ),
+            ),
+            label: '',
+          ),
+          // favourite
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {
+                // Handle play/pause button click
+                print('fav');
+              },
+              icon: const Icon(
+                Icons.favorite,
+                size: 30,
+              ),
+            ),
+            label: '',
+          ),
+          // share button
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: () {
+                // Handle play/pause button click
+                print('fav');
+              },
+              icon: const Icon(
+                Icons.share,
+                size: 30,
+              ),
+            ),
+            label: '',
+          ),
+        ],
       ),
     );
   }
