@@ -29,7 +29,7 @@ class SubPage2 extends StatelessWidget {
     );
   }
 }
-// subpage 1
+// subpage 3
 class SubPage3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -37,14 +37,14 @@ class SubPage3 extends StatelessWidget {
       color: const Color.fromRGBO(120, 142, 141, 0.56),
       child: const Center(
         child: Text(
-          'Sub Page 1',
+          'Sub Page 3',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
     );
   }
 }
-// subpage 2
+// subpage 4
 class SubPage4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class SubPage4 extends StatelessWidget {
       color: const Color.fromRGBO(120, 142, 141, 0.4),
       child: const Center(
         child: Text(
-          'Sub Page 2',
+          'Sub Page 4',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
