@@ -8,8 +8,120 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  bool _UrduTranslation = false;
+  bool _EnglishTranslation = false;
+  double _textSize = 30;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: ListView(
+        padding: const EdgeInsets.all(20.0),
+        children: [
+          const Text(
+            'LANGUAGE SETTINGS',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 15,
+            ),
+          ),
+          // space
+          const SizedBox(height: 10),
+          // urdu translation line starts
+          Row(
+            mainAxisAlignment: MainAxisAlignment
+                .spaceBetween, // Add this line to space out the children
+            children: [
+              const Text(
+                'Urdu Translation',
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Switch(
+                activeColor: const Color(0xFF677C7B),
+                value: _UrduTranslation,
+                onChanged: (value) {
+                  setState(() {
+                    _UrduTranslation = !_UrduTranslation;
+                    print('urdu translation enabled: $_UrduTranslation');
+                  });
+                },
+              ),
+            ],
+          ),
+          // line ended
+          // thin line
+          Container(
+            height: 0.5,
+            color: Colors.black,
+          ),
+
+          // english translation line starts
+          Row(
+            mainAxisAlignment: MainAxisAlignment
+                .spaceBetween, // Add this line to space out the children
+            children: [
+              const Text(
+                'English Translation',
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Switch(
+                activeColor: const Color(0xFF677C7B),
+                value: _EnglishTranslation,
+                onChanged: (value) {
+                  setState(() {
+                    _EnglishTranslation = !_EnglishTranslation;
+                    print('English translation enabled: $_EnglishTranslation');
+                  });
+                },
+              ),
+            ],
+          ),
+          // sized box between anguage and font settings
+          SizedBox(height: 10),
+          // font settings
+          const Text(
+            'FONT SETTINGS',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 15,
+            ),
+          ),
+          SizedBox(height: 10),
+          const Text(
+            'Font Size',
+            textAlign: TextAlign.left,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 40),
+          Text(
+            'ٱلْحَمْدُ لِلّٰهِ',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: _textSize, // Use a variable to control the font size
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          Slider(
+            value: _textSize,
+            activeColor: const Color(0xFF677C7B),
+            inactiveColor: const Color(0xFFD9D9D9),
+            thumbColor: const Color.fromARGB(255, 255, 255, 255),
+            min: 10, // Adjust the min and max values as needed
+            max: 100,
+            onChanged: (newValue) {
+              setState(() {
+                _textSize = newValue;
+              });
+            },
+          ),
+        ],
+        
+
+      ),
+    );
   }
 }
