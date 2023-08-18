@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
+
 
 
 
 // subpage 1
 class SubPage1 extends StatelessWidget {
-  AudioPlayer _audioPlayer = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
