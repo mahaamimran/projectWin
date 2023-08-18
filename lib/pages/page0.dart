@@ -146,7 +146,7 @@ class _Page0State extends State<Page0> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         backgroundColor: Colors.white,
-        unselectedItemColor: const Color.fromARGB(150, 120, 142, 141),
+        unselectedItemColor: const Color.fromARGB(255, 55, 73, 87),
         selectedItemColor: const Color.fromARGB(255, 55, 73, 87),
         currentIndex: _selectedIndex,
         onTap: (index) {
