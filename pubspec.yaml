@@ -13,7 +13,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   google_nav_bar: ^5.0.6
-  audioplayers: ^5.1.0
+  audioplayers: ^0.19.1
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +26,4 @@ flutter:
   assets:
     - assets/
     - assets/navigationbar/
+    - assets/audios/

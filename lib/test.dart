@@ -1,47 +1,50 @@
+/*
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
-class SenderWidget extends StatelessWidget {
-  final bool message;
-
-  SenderWidget({required this.message});
-
+class AudioPlayerPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      color: Colors.blue,
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ReceiverWidget(message: message),
-            ),
-          );
-        },
-        child: Text('Send Message'),
-      ),
-    );
-  }
+  _AudioPlayerPageState createState() => _AudioPlayerPageState();
 }
 
-class ReceiverWidget extends StatelessWidget {
-  final bool message;
+class _AudioPlayerPageState extends State<AudioPlayerPage> {
+  AudioPlayer audioPlayer = AudioPlayer();
+  AudioCache audioCache = AudioCache(prefix: 'audios/'); // Specify the folder path
 
-  ReceiverWidget({required this.message});
+  @override
+  void initState() {
+    super.initState();
+    // Preload the audio file
+    audioCache.load('test.mp3'); // Replace with your audio file's name
+  }
+
+  Future<void> playAudio() async {
+    final player = await audioCache.play('test.mp3'); // Replace with your audio file's name
+    // You can use the 'player' object to control playback if needed
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Receiver Widget'),
+        title: Text('Audio Player'),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        color: Colors.green,
-        child: Text('Received Message: $message'),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Play the preloaded audio file
+            playAudio();
+          },
+          child: Text('Play Audio'),
+        ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
   }
 }
 
@@ -49,9 +52,9 @@ class MyApp2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SenderWidget(message: false),
+      home: AudioPlayerPage(),
     );
   }
 }
 
-
+*/

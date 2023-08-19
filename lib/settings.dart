@@ -10,7 +10,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   bool _UrduTranslation = false;
   bool _EnglishTranslation = false;
-  double _textSize = 30;
+  double _textSize = 40;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,9 +94,10 @@ class _SettingsState extends State<Settings> {
             textAlign: TextAlign.left,
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 40),
+          // height changing sized box
+          Container(height: 100 - (_textSize * 0.7), color: Colors.white),
           Text(
-            'ٱلْحَمْدُ لِلّٰهِ',
+            'ٱلْحَمْدُ لله',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
@@ -105,6 +106,8 @@ class _SettingsState extends State<Settings> {
               fontWeight: FontWeight.w400,
             ),
           ),
+          // height changing sized box
+          Container(height: 100 - (_textSize * 0.7), color: Colors.white),
           Slider(
             value: _textSize,
             activeColor: const Color(0xFF677C7B),
@@ -119,8 +122,6 @@ class _SettingsState extends State<Settings> {
             },
           ),
         ],
-        
-
       ),
     );
   }
