@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 
 
 
 // subpage 1
-class SubPage1 extends StatelessWidget {
+class SubPage1 extends StatefulWidget {
+  @override
+  State<SubPage1> createState() => _SubPage1State();
+}
+
+class _SubPage1State extends State<SubPage1> {
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +80,7 @@ class Page0 extends StatefulWidget {
 }
 
 class _Page0State extends State<Page0> {
+  
   //bool isGalleryView = true;
   int _selectedIndex = 0;
   bool _isPlaying = false;

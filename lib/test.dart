@@ -1,6 +1,6 @@
-/*
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'dart:async';
 
 class AudioPlayerPage extends StatefulWidget {
   @override
@@ -9,18 +9,17 @@ class AudioPlayerPage extends StatefulWidget {
 
 class _AudioPlayerPageState extends State<AudioPlayerPage> {
   AudioPlayer audioPlayer = AudioPlayer();
-  AudioCache audioCache = AudioCache(prefix: 'audios/'); // Specify the folder path
 
   @override
   void initState() {
     super.initState();
-    // Preload the audio file
-    audioCache.load('test.mp3'); // Replace with your audio file's name
   }
 
   Future<void> playAudio() async {
-    final player = await audioCache.play('test.mp3'); // Replace with your audio file's name
-    // You can use the 'player' object to control playback if needed
+    String url =
+        'https://drive.google.com/file/d/1dfFTvUgTThlX3_AyTEYA68ic4jTgIXNB/view?usp=sharing';
+
+    await audioPlayer.play(UrlSource(url));
   }
 
   @override
@@ -56,5 +55,3 @@ class MyApp2 extends StatelessWidget {
     );
   }
 }
-
-*/
