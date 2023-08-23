@@ -10,6 +10,8 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   bool _UrduTranslation = false;
   bool _EnglishTranslation = false;
+  bool _References = false;
+  bool _Transliteration = false;
   double _textSize = 40;
   @override
   Widget build(BuildContext context) {
@@ -120,6 +122,59 @@ class _SettingsState extends State<Settings> {
                 _textSize = newValue;
               });
             },
+          ),
+
+          // translation + transliteration
+          // Transliteration
+          Row(
+            mainAxisAlignment: MainAxisAlignment
+                .spaceBetween, // Add this line to space out the children
+            children: [
+              const Text(
+                'Transliteration',
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Switch(
+                activeColor: const Color(0xFF677C7B),
+                value: _Transliteration,
+                onChanged: (value) {
+                  setState(() {
+                    _Transliteration = !_Transliteration;
+                    print('Transliteration enabled: $_Transliteration');
+                  });
+                },
+              ),
+            ],
+          ),
+          // line ended
+          // thin line
+          Container(
+            height: 0.5,
+            color: Colors.black,
+          ),
+
+          // references line starts
+          Row(
+            mainAxisAlignment: MainAxisAlignment
+                .spaceBetween, // Add this line to space out the children
+            children: [
+              const Text(
+                'References',
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Switch(
+                activeColor: const Color(0xFF677C7B),
+                value: _References,
+                onChanged: (value) {
+                  setState(() {
+                    _References = !_References;
+                    print('References enabled: $_References');
+                  });
+                },
+              ),
+            ],
           ),
         ],
       ),

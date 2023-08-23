@@ -15,12 +15,11 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
     super.initState();
   }
 
-  Future<void> playAudio() async {
-    String url =
-        'https://drive.google.com/file/d/1dfFTvUgTThlX3_AyTEYA68ic4jTgIXNB/view?usp=sharing';
-
-    await audioPlayer.play(UrlSource(url));
-  }
+Future<void> playAudio() async {
+  String url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3';
+  
+  await audioPlayer.play(UrlSource(url));
+}
 
   @override
   Widget build(BuildContext context) {
