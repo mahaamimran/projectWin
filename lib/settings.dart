@@ -125,7 +125,34 @@ class _SettingsState extends State<Settings> {
           ),
 
           // translation + transliteration
-          // Transliteration
+          Row(
+            mainAxisAlignment: MainAxisAlignment
+                .spaceBetween, // Add this line to space out the children
+            children: [
+              const Text(
+                'References',
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Switch(
+                activeColor: const Color(0xFF677C7B),
+                value: _References,
+                onChanged: (value) {
+                  setState(() {
+                    _References = !_References;
+                    print('References enabled: $_References');
+                  });
+                },
+              ),
+            ],
+          ),
+          // thin line
+          Container(
+            height: 0.5,
+            color: Colors.black,
+          ),
+
+         // Transliteration
           Row(
             mainAxisAlignment: MainAxisAlignment
                 .spaceBetween, // Add this line to space out the children
@@ -148,34 +175,8 @@ class _SettingsState extends State<Settings> {
             ],
           ),
           // line ended
-          // thin line
-          Container(
-            height: 0.5,
-            color: Colors.black,
-          ),
-
           // references line starts
-          Row(
-            mainAxisAlignment: MainAxisAlignment
-                .spaceBetween, // Add this line to space out the children
-            children: [
-              const Text(
-                'References',
-                textAlign: TextAlign.left,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Switch(
-                activeColor: const Color(0xFF677C7B),
-                value: _References,
-                onChanged: (value) {
-                  setState(() {
-                    _References = !_References;
-                    print('References enabled: $_References');
-                  });
-                },
-              ),
-            ],
-          ),
+          
         ],
       ),
     );
