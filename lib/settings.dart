@@ -91,40 +91,7 @@ class _SettingsState extends State<Settings> {
             ),
           ),
           SizedBox(height: 10),
-          const Text(
-            'Font Size',
-            textAlign: TextAlign.left,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          // height changing sized box
-          Container(height: 100 - (_textSize * 0.7), color: Colors.white),
-          Text(
-            'ٱلْحَمْدُ لله',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: _textSize, // Use a variable to control the font size
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          // height changing sized box
-          Container(height: 100 - (_textSize * 0.7), color: Colors.white),
-          Slider(
-            value: _textSize,
-            activeColor: const Color(0xFF677C7B),
-            inactiveColor: const Color(0xFFD9D9D9),
-            thumbColor: const Color.fromARGB(255, 255, 255, 255),
-            min: 10, // Adjust the min and max values as needed
-            max: 100,
-            onChanged: (newValue) {
-              setState(() {
-                _textSize = newValue;
-              });
-            },
-          ),
-
-          // translation + transliteration
+             // references + transliteration
           Row(
             mainAxisAlignment: MainAxisAlignment
                 .spaceBetween, // Add this line to space out the children
@@ -176,6 +143,46 @@ class _SettingsState extends State<Settings> {
           ),
           // line ended
           // references line starts
+          Container(
+            height: 0.5,
+            color: Colors.black,
+          ),
+          SizedBox(height: 20),
+          const Text(
+            'Font Size',
+            textAlign: TextAlign.left,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          // fix this part
+          // height changing sized box
+          Container(height: 100 - (_textSize * 0.7), color: Colors.white),
+          Text(
+            'ٱلْحَمْدُ لله',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: _textSize, // Use a variable to control the font size
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          // height changing sized box
+          Container(height: 100 - (_textSize * 0.7), color: Colors.white),
+          Slider(
+            value: _textSize,
+            activeColor: const Color(0xFF677C7B),
+            inactiveColor: const Color(0xFFD9D9D9),
+            thumbColor: const Color.fromARGB(255, 255, 255, 255),
+            min: 10, // Adjust the min and max values as needed
+            max: 100,
+            onChanged: (newValue) {
+              setState(() {
+                _textSize = newValue;
+              });
+            },
+          ),
+
+       
           
         ],
       ),
