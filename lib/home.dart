@@ -79,14 +79,14 @@ class _HomeState extends State<Home> {
     'Warding Off Evil-Eye',
   ];
   List<String> containerImages = [
-    'assets/listView.png',
-    'assets/listView.png',
-    'assets/listView.png',
-    'assets/listView.png',
-    'assets/listView.png',
-    'assets/listView.png',
-    'assets/listView.png',
-    'assets/listView.png',
+    'assets//flower.png',
+    'assets/sun.png',
+    'assets/sunset.png',
+    'assets/protection.png',
+    'assets/enemyProtection.png',
+    'assets/night.png',
+    'assets/sleep.png',
+    'assets/badDream.png',
     'assets/listView.png',
     'assets/listView.png',
   ];
