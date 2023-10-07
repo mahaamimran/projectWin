@@ -109,21 +109,21 @@ class _MyAppState extends State<MyApp> {
                           'assets/navigationbar/home.png',
                           scale: 0.8,
                         ),
-                        label: '',
+                        label: 'Home',
                       ),
                       BottomNavigationBarItem(
                         icon: Image.asset(
                           'assets/navigationbar/favourites.png',
                           scale: 0.8,
                         ),
-                        label: '',
+                        label: 'Favourites',
                       ),
                       BottomNavigationBarItem(
                         icon: Image.asset(
                           'assets/navigationbar/settings.png',
                           scale: 0.8,
                         ),
-                        label: '',
+                        label: 'Settings',
                       ),
                     ],
                   ),

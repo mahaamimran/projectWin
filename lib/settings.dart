@@ -91,7 +91,7 @@ class _SettingsState extends State<Settings> {
             ),
           ),
           SizedBox(height: 10),
-             // references + transliteration
+          // references + transliteration
           Row(
             mainAxisAlignment: MainAxisAlignment
                 .spaceBetween, // Add this line to space out the children
@@ -119,7 +119,7 @@ class _SettingsState extends State<Settings> {
             color: Colors.black,
           ),
 
-         // Transliteration
+          // Transliteration
           Row(
             mainAxisAlignment: MainAxisAlignment
                 .spaceBetween, // Add this line to space out the children
@@ -157,12 +157,12 @@ class _SettingsState extends State<Settings> {
           // height changing sized box
           Container(height: 100 - (_textSize * 0.7), color: Colors.white),
           Text(
-            'ٱلْحَمْدُ لله',
+            'ٱلْحَمْدُ لِلّٰهِ',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
               fontSize: _textSize, // Use a variable to control the font size
-              fontFamily: 'Roboto',
+              // fontFamily: 'Roboto',
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -181,9 +181,6 @@ class _SettingsState extends State<Settings> {
               });
             },
           ),
-
-       
-          
         ],
       ),
     );
