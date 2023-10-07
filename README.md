@@ -1,6 +1,4 @@
-# projectWin 🤲🏻
-The "Wa Iyyaka Nastaeen" app is a comprehensive supplication companion designed to enrich the spiritual journey of Muslims. With a focus on connecting individuals with heartfelt prayers and invocations, the app offers a wide array of features tailored to enhance the supplication experience.
-This app embodies a commitment to elevating the supplication experience through its user-friendly interface, comprehensive features, and continuous efforts to accommodate user preferences.
+# projectWin (WaIyyaka Nastaeen)🤲🏻
 
 ## Resources
 - [UI: Link to Figma](https://www.figma.com/file/twMmbJWSRoQQCQdReLBi84/ProjectWin?type=design&node-id=1%3A5&mode=design&t=iIcAKfxhNjD6Kwgv-1)
